@@ -15,7 +15,7 @@
 <body>
     <?php
 $namaErr = $emailErr = $genderErr = $websiteErr = "";
-$namaErr = $email = $gender = $comment = $website = "";
+$nama = $email = $gender = $comment = $website = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["nama"])) {
