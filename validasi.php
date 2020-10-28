@@ -14,47 +14,48 @@
 
 <body>
     <?php
-$namaErr = $emailErr = $genderErr = $websiteErr = "";
-$nama = $email = $gender = $comment = $website = "";
+        // Menentukan variabel dan setel ke nilai kosong
+        $namaErr = $emailErr = $genderErr = $websiteErr = "";
+        $nama = $email = $gender = $comment = $website = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["nama"])) {
-        $namaErr = "Nama harus diisi";
-    }else{
-        $nama = test_input($_POST["nama"]);
-    }
-    if (empty($_POST["email"])) {
-        $emailErr = "Email harus diisi";
-    }else {
-        $email = test_input($_POST["email"]);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["nama"])) {
+            $namaErr = "Nama harus diisi";
+        }else{
+            $nama = test_input($_POST["nama"]);
+        }
+        if (empty($_POST["email"])) {
+            $emailErr = "Email harus diisi";
+        }else {
+            $email = test_input($_POST["email"]);
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Email tidak sesuai format";
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Email tidak sesuai format";
+            }
+        }
+        if (empty($_POST["website"])) {
+            $website = "";
+        }else {
+            $website = test_input($_POST["website"]);
+        }
+        if (empty($_POST["comment"])) {
+            $comment = "";
+        }else {
+            $comment = test_input($_POST["comment"]);
+        }
+        if (empty($_POST["gender"])) {
+            $genderErr = "Gender harus dipilih";
+        } else {
+            $gender = test_input($_POST["gender"]);
         }
     }
-    if (empty($_POST["website"])) {
-        $website = "";
-    }else {
-        $website = test_input($_POST["website"]);
-    }
-    if (empty($_POST["comment"])) {
-        $comment = "";
-    }else {
-        $comment = test_input($_POST["comment"]);
-    }
-    if (empty($_POST["gender"])) {
-        $genderErr = "Gender harus dipilih";
-    } else {
-        $gender = test_input($_POST["gender"]);
-    }
-}
 
-function test_input($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+    function test_input($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 ?>
 
     <h2>Posting Komentar</h2>
