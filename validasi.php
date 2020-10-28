@@ -29,6 +29,7 @@
         }else {
             $email = test_input($_POST["email"]);
 
+            // Periksa apakah alamat email sudah benar
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $emailErr = "Email tidak sesuai format";
             }
